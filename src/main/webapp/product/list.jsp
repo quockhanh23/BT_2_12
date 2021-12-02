@@ -14,11 +14,9 @@
 <body>
 <form action="/products">
     <input type="text" name="key">
-    <button>Find</button>
+    <button>Find Name Product</button>
 </form>
 <a href="/products?action=create">create new</a>
-<%--<a href="/products?action=findByName">order by Name</a>--%>
-
 <c:forEach var="cus" items="${alo}">
     <h2>${cus.id} ${cus.name}, ${cus.price}, ${cus.quantity}
         <a href="/products?action=edit&id=${cus.id}">Edit</a>

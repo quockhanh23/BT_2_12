@@ -7,13 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-  <form style="text-align: center">
-    <a href="/products">Show List Product</a>
-  </form>
+    <style>
+    </style>
+</head>
+<body>
 
-  </body>
+<form style="text-align: center">
+    <a href="/products">Show List Product</a>
+</form>
+</body>
 </html>

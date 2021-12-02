@@ -18,7 +18,8 @@
     <input type="text" name="name">
     <input type="text" name="price">
     <input type="text" name="quantity">
-   <button>Create</button>
+    <button>Create</button>
+    <a href="/products">Back to list</a>
 </form>
 </body>
 </html>

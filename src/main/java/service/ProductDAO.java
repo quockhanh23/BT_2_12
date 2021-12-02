@@ -79,7 +79,7 @@ public class ProductDAO implements IProductDAO {
                 String name1 = rs.getString("name");
                 int quantity = Integer.parseInt(rs.getString("quantity"));
                 double price = Double.parseDouble(rs.getString("price"));
-                product.add(new Product(id,name1, price, quantity));
+                product.add(new Product(id, name1, price, quantity));
             }
         } catch (SQLException ignored) {
 
@@ -101,7 +101,7 @@ public class ProductDAO implements IProductDAO {
                 String name1 = rs.getString("name");
                 int quantity = Integer.parseInt(rs.getString("quantity"));
                 double price = Double.parseDouble(rs.getString("price"));
-                product.add(new Product(id,name1, price, quantity));
+                product.add(new Product(id, name1, price, quantity));
             }
         } catch (SQLException ignored) {
 

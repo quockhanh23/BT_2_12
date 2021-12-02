@@ -28,9 +28,12 @@
         </tr>
         <tr>
             <td></td>
-            <td><button>Delete</button></td>
+            <td>
+                <button>Delete</button>
+            </td>
         </tr>
     </table>
+    <a href="/products">Back to list</a>
 </form>
 </body>
 </html>

@@ -39,7 +39,7 @@ public class ProductServlet extends HttpServlet {
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-       Product product = productDAO.findById(id);
+        Product product = productDAO.findById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/edit.jsp");
         request.setAttribute("aloEdit", product);
         dispatcher.forward(request, response);
@@ -99,7 +99,6 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-
         }
     }
 
