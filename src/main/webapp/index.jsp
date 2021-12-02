@@ -11,6 +11,9 @@
     <title>$Title$</title>
   </head>
   <body>
-<a href="/products">Show List Product</a>
+  <form style="text-align: center">
+    <a href="/products">Show List Product</a>
+  </form>
+
   </body>
 </html>

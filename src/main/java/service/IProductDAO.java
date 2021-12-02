@@ -10,7 +10,7 @@ public interface IProductDAO {
     public void add(Product product) throws SQLException;
     public Product findById(int id);
     public  List<Product> findByName(String name);
-    public List<Product> findByOrder();
+    public List<Product> orderByName();
     public boolean delete(int id) throws SQLException;
     public boolean update(Product product) throws SQLException;
 

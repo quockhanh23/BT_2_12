@@ -25,9 +25,6 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showCreate(request, response);
                 break;
-            case "findByName":
-                showFindByName(request, response);
-                break;
             case "delete":
                 showDelete(request, response);
                 break;
@@ -54,19 +51,6 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/delete.jsp");
         request.setAttribute("aloDelete", product);
         dispatcher.forward(request, response);
-    }
-
-    private void showFindByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/list.jsp");
-        String key = request.getParameter("key");
-        List<Product> products;
-        if (key == null) {
-            products = productDAO.findByOrder();
-        } else {
-            products = productDAO.findByName(key);
-        }
-        request.setAttribute("alo", products);
-        requestDispatcher.forward(request, response);
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

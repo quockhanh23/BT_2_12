@@ -17,10 +17,8 @@ public class ProductDAO implements IProductDAO {
             connection = DriverManager.getConnection
                     ("jdbc:mysql://localhost:3306/demo20062?useSSL=false", "root", "123456");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return connection;
@@ -77,10 +75,11 @@ public class ProductDAO implements IProductDAO {
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
+                int id = Integer.parseInt(rs.getString("id"));
                 String name1 = rs.getString("name");
                 int quantity = Integer.parseInt(rs.getString("quantity"));
-                double price = Integer.parseInt(rs.getString("price"));
-                product.add(new Product(name1, price, quantity));
+                double price = Double.parseDouble(rs.getString("price"));
+                product.add(new Product(id,name1, price, quantity));
             }
         } catch (SQLException ignored) {
 
@@ -89,7 +88,7 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public List<Product> findByOrder() {
+    public List<Product> orderByName() {
         List<Product> product = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
