@@ -28,10 +28,32 @@ public class ProductServlet extends HttpServlet {
             case "findByName":
                 showFindByName(request, response);
                 break;
+            case "delete":
+                showDelete(request, response);
+                break;
+            case "edit":
+                showEdit(request, response);
+                break;
             default:
                 showListProduct(request, response);
                 break;
         }
+    }
+
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+       Product product = productDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/edit.jsp");
+        request.setAttribute("aloEdit", product);
+        dispatcher.forward(request, response);
+    }
+
+    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/delete.jsp");
+        request.setAttribute("aloDelete", product);
+        dispatcher.forward(request, response);
     }
 
     private void showFindByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,8 +101,38 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "delete":
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "edit":
+                try {
+                    saveEdit(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
 
         }
+    }
+
+    private void saveEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        String name = request.getParameter("name");
+        Product product = new Product(id, name, price, quantity);
+        productDAO.update(product);
+        response.sendRedirect("/products");
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productDAO.delete(id);
+        response.sendRedirect("/products");
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
@@ -88,7 +140,7 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        productDAO.add(new Product(name, price, quantity));
+        productDAO.add(new Product(id, name, price, quantity));
         response.sendRedirect("/products");
     }
 }

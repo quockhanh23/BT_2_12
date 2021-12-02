@@ -21,8 +21,8 @@
 <%--<a href="/customers?action=showListByOrder">Order</a>--%>
 <c:forEach var="cus" items="${alo}">
     <h2>${cus.id} ${cus.name}, ${cus.price}, ${cus.quantity}
-<%--        <a href="/customers?action=edit&id=${cus.id}">Edit</a>--%>
-<%--        <a href="/customers?action=delete&id=${cus.id}">Delete</a>--%>
+        <a href="/products?action=edit&id=${cus.id}">Edit</a>
+        <a href="/products?action=delete&id=${cus.id}">Delete</a>
     </h2>
 
 </c:forEach>
