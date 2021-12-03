@@ -9,6 +9,9 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+
+    </style>
 </head>
 <body>
 <h2>alo</h2>
@@ -19,7 +22,8 @@
     <input type="text" name="price" value="${aloEdit.price}">
     <input type="text" name="quantity" value="${aloEdit.quantity}">
     <button>Edit</button>
-    <a href="/products">Back to list</a>
+    <button><a href="/products">Back to list</a></button>
+
 </form>
 </body>
 </html>

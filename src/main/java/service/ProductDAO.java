@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO implements IProductDAO {
+
     public ProductDAO() {
     }
 
@@ -94,7 +95,6 @@ public class ProductDAO implements IProductDAO {
              PreparedStatement preparedStatement = connection.prepareStatement
                      ("select * from product order by name");) {
             System.out.println(preparedStatement);
-//            preparedStatement.setString(1, "name" );
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int id = Integer.parseInt(rs.getString("id"));
@@ -134,6 +134,5 @@ public class ProductDAO implements IProductDAO {
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
         return rowUpdated;
-
     }
 }
