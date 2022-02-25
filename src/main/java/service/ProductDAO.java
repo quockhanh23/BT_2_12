@@ -81,48 +81,6 @@ public class ProductDAO implements IProductDAO {
         return product;
     }
 
-    @Override
-    public List<Product> findByName(String name) {
-        List<Product> product = new ArrayList<>();
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from product where name like ?");) {
-            System.out.println(preparedStatement);
-            preparedStatement.setString(1, "%" + name + "%");
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = Integer.parseInt(rs.getString("id"));
-                String name1 = rs.getString("name");
-                int quantity = Integer.parseInt(rs.getString("quantity"));
-                double price = Double.parseDouble(rs.getString("price"));
-                product.add(new Product(id, name1, price, quantity));
-            }
-        } catch (SQLException ignored) {
-
-        }
-        return product;
-    }
-
-    @Override
-    public List<Product> orderByName() {
-        List<Product> product = new ArrayList<>();
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from product order by name");) {
-            System.out.println(preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = Integer.parseInt(rs.getString("id"));
-                String name1 = rs.getString("name");
-                int quantity = Integer.parseInt(rs.getString("quantity"));
-                double price = Double.parseDouble(rs.getString("price"));
-                product.add(new Product(id, name1, price, quantity));
-            }
-        } catch (SQLException ignored) {
-
-        }
-        return product;
-    }
 
     @Override
     public boolean delete(int id) throws SQLException {

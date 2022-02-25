@@ -22,7 +22,6 @@
     <input type="text" name="quantity" placeholder="quantity" value="${aloEdit.quantity}">
     <button>Edit</button>
     <button><a href="/products">Back to list</a></button>
-
 </form>
 </body>
 </html>

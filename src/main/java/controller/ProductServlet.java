@@ -13,6 +13,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
+    // Đỏ nhưng vẫn chạy
     private IProductDAO productDAO = new ProductDAO();
 
     @Override
@@ -31,20 +32,12 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 showEdit(request, response);
                 break;
-            case "showListByOrder":
-                showListByOrder(request, response);
-                break;
             default:
                 showListProduct(request, response);
                 break;
         }
     }
-    private void showListByOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/list.jsp");
-        List<Product> products = productDAO.orderByName();
-        request.setAttribute("alo", products);
-        requestDispatcher.forward(request, response);
-    }
+
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -69,13 +62,8 @@ public class ProductServlet extends HttpServlet {
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/list.jsp");
-        String key = request.getParameter("key");
         List<Product> products;
-        if (key == null) {
-            products = productDAO.findAll();
-        } else {
-            products = productDAO.findByName(key);
-        }
+        products = productDAO.findAll();
         request.setAttribute("alo", products);
         requestDispatcher.forward(request, response);
     }

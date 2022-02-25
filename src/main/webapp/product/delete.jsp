@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
     <h2>Delete</h2>
     <form method="post">
         <h1>Delete</h1>
@@ -21,7 +20,6 @@
         <h3>${aloDelete.quantity}</h3>
         <a href="/products">Back to list</a>
         <button>Delete</button>
-        <a href="/products">Back to list</a>
-</form>
+    </form>
 </body>
 </html>
